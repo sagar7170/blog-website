@@ -20,7 +20,10 @@ const blogSlice  = createSlice({
         update(state,action){
             const {cover,title,story,index} = action.payload
            state.posts.splice(index,1,{cover,title,story});
-        console.log("update",title)
+        },
+        deleteblog(state,action){
+            const {index} = action.payload
+            state.posts.splice(index,1);
         }
     }
 }) 

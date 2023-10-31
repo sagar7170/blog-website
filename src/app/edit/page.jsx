@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../redux/Slice';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import Link from 'next/link';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Write() {
     const edit = useSelector(state => state.edit);
@@ -28,6 +29,7 @@ function Write() {
     }
 
     const save = () => {
+        toast.success('Blog saved');
         dispatch(actions.update({ title, story, cover, index }))
     }
 
@@ -42,7 +44,8 @@ function Write() {
                 <input value={title} onChange={handleTitleInput} className='h-20 p-3 border-l-2 border-gray-500 text-5xl outline-none' type="text" placeholder='Title' />
                 <textarea value={story} onChange={handleStoryInput} className='outline-none text-xl p-3 overflow-hidden' type="text" placeholder='Tell your Story..' ></textarea>
                 <Link  href="/">
-                    <button onClick={save} className='bg-green-600 w-20 p-2 rounded-full font-bold text-white'>Update</button> 
+                    <button onClick={save} className='bg-green-600 w-20 p-2 rounded-full font-bold text-white'>Update</button>
+                    <Toaster/>
                 </Link>
             </div>
         </div>
